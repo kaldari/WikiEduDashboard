@@ -300,6 +300,7 @@ en:
     join_course: Join course
     join_prompt: Join '%{title}'?
     join_successful: You’ve successfully joined %{title}.
+    join_details: To join this course, you need to get the passcode — or an enrollment link that includes the passcode — from the instructor. If you haven't received this, contact your instructor.
     leave_confirmation: Are you sure you want to leave this course?
     leave_course: Leave course
     loading: Loading…
@@ -408,6 +409,7 @@ en:
     expected_students: Expected Editors
     instructors: Facilitators
     join_course: Join program
+    join_details: To join this program, you need to get the passcode — or link that includes the passcode — from the facilitator.
     leave_course: Leave program
     milestones_none: This project does not currently have any milestones.
     published: "This project has been published! Editors may enroll by visiting the following URL:"
