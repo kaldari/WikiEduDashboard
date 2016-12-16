@@ -64,7 +64,7 @@ describe 'Student users', type: :feature, js: true do
     end
   end
 
-  describe 'enrolling and unenrolling by button' do
+  describe 'enrolling and unenrolling by button', focus: true do
     it 'joins and leaves a course' do
       login_as(user, scope: :user)
       stub_oauth_edit
@@ -74,10 +74,11 @@ describe 'Student users', type: :feature, js: true do
 
       expect(page).to have_content 'An Example Course'
 
-      accept_prompt(with: 'passcode') do
-        click_button 'Join course'
+      click_button 'Join course'
+      within('.confirm-modal') do
+        find('input').set('passcode')
+        click_button 'OK'
       end
-
       sleep 3
 
       visit "/courses/#{Course.first.slug}/students"
@@ -102,8 +103,10 @@ describe 'Student users', type: :feature, js: true do
       login_as(user, scope: :user)
       visit "/courses/#{Course.first.slug}"
       sleep 1
-      accept_prompt(with: 'wrong_passcode') do
-        click_button 'Join course'
+      click_button 'Join course'
+      within('.confirm-modal') do
+        find('input').set('wrong passcode')
+        click_button 'OK'
       end
       expect(page).to have_content 'Incorrect passcode'
       sleep 5
